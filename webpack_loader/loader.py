@@ -3,7 +3,6 @@ import time
 from io import open
 
 from django.conf import settings
-from django.contrib.staticfiles.storage import staticfiles_storage
 
 from .exceptions import (
     WebpackError,
@@ -57,7 +56,7 @@ class WebpackLoader(object):
         relpath = '{0}{1}'.format(
             self.config['BUNDLE_DIR_NAME'], chunk_name
         )
-        return staticfiles_storage.url(relpath)
+        return relpath
 
     def get_bundle(self, bundle_name):
         assets = self.get_assets()
